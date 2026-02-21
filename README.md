@@ -34,8 +34,8 @@ A modern, minimalist login security simulation lab designed for cybersecurity tr
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/undersec-login.git
-   cd undersec-login
+   git clone https://github.com/jhuiwery/UnderSec-PhoneLoginTask.git
+   cd UnderSec-PhoneLoginTask
    ```
 
 2. Install dependencies:
@@ -55,10 +55,6 @@ A modern, minimalist login security simulation lab designed for cybersecurity tr
 3. Look at the **bottom-right corner** of the screen. Click the "Eye" icon to reveal the simulated OTP.
 4. Enter the 4-digit code into the input field.
 5. Click **"Login Now"** (立即登录) to see the success state.
-
-## 📄 License
-
-This project is licensed under the Apache-2.0 License.
 
 ---
 Built for **UnderSec Lab** education initiatives.
