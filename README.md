@@ -1,10 +1,10 @@
-# UnderSec-Login
+# UnderSec-PhoneLoginTask
 
 A modern, minimalist login security simulation lab designed for cybersecurity training and UI/UX exploration.
 
 ## 🚀 Overview
 
-**UnderSec-Login** is a high-fidelity "shooting range" (靶场) for simulating mobile OTP (One-Time Password) login flows. It provides a safe environment for students and security enthusiasts to practice identifying login patterns, testing UI vulnerabilities, or simply exploring modern authentication interfaces.
+**UnderSec-PhoneLoginTask** is a high-fidelity "shooting range" (靶场) for simulating mobile OTP (One-Time Password) login flows. It provides a safe environment for students and security enthusiasts to practice identifying login patterns, testing UI vulnerabilities, or simply exploring modern authentication interfaces.
 
 ## ✨ Features
 
@@ -55,6 +55,20 @@ A modern, minimalist login security simulation lab designed for cybersecurity tr
 3. Look at the **bottom-right corner** of the screen. Click the "Eye" icon to reveal the simulated OTP.
 4. Enter the 4-digit code into the input field.
 5. Click **"Login Now"** (立即登录) to see the success state.
+
+## 🌐 Deployment
+
+This project is configured for automatic deployment to **GitHub Pages** via GitHub Actions.
+
+### Setup Instructions:
+
+1.  Push your code to the `main` branch of your GitHub repository.
+2.  Go to your repository on GitHub.
+3.  Navigate to **Settings** > **Pages**.
+4.  Under **Build and deployment** > **Source**, select **GitHub Actions**.
+5.  The next time you push to `main`, the workflow in `.github/workflows/deploy.yml` will automatically build and deploy your site.
+
+Your site will be available at: `https://jhuiwery.github.io/UnderSec-PhoneLoginTask/`
 
 ---
 Built for **UnderSec Lab** education initiatives.
