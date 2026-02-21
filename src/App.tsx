@@ -22,7 +22,7 @@ type Lang = 'zh' | 'en';
 
 const translations = {
   zh: {
-    title: '安全登录',
+    title: '登录',
     subtitle: '请输入您的手机号以继续',
     phoneLabel: '手机号码',
     phonePlaceholder: '输入手机号',
@@ -42,7 +42,7 @@ const translations = {
     verifying: '验证中'
   },
   en: {
-    title: 'Secure Login',
+    title: 'Login',
     subtitle: 'Please enter your phone number to continue',
     phoneLabel: 'Phone Number',
     phonePlaceholder: 'Enter phone number',
@@ -85,7 +85,7 @@ export default function App() {
     }
   }, [countdown]);
 
-  const handleSendOtp = () => {
+  const handleSendOtp = async () => {
     if (!phone || phone.length < 10) {
       setError(t.errorPhone);
       return;
@@ -93,16 +93,29 @@ export default function App() {
     setError('');
     setIsSending(true);
     
-    // Simulate network delay
-    setTimeout(() => {
-      const code = Math.floor(1000 + Math.random() * 9000).toString();
-      setGeneratedOtp(code);
+    try {
+      const response = await fetch('/api/send-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone }),
+      });
+      
+      if (response.ok) {
+        // Trigger hint update
+        setGeneratedOtp('PENDING'); // Just to trigger the hint UI
+        setCountdown(60);
+      } else {
+        const data = await response.json();
+        setError(data.error || 'Failed to send OTP');
+      }
+    } catch (err) {
+      setError('Network error');
+    } finally {
       setIsSending(false);
-      setCountdown(60);
-    }, 1200);
+    }
   };
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!otp) {
       setError(t.errorOtp);
@@ -112,16 +125,42 @@ export default function App() {
     setIsVerifying(true);
     setError('');
 
-    // Simulate verification
-    setTimeout(() => {
-      if (otp === generatedOtp) {
+    try {
+      const response = await fetch('/api/verify-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone, otp }),
+      });
+
+      if (response.ok) {
         setState('SUCCESS');
       } else {
-        setError(t.errorVerify);
+        const data = await response.json();
+        setError(data.error || t.errorVerify);
       }
+    } catch (err) {
+      setError('Network error');
+    } finally {
       setIsVerifying(false);
-    }, 1000);
+    }
   };
+
+  // Poll for hint from server
+  useEffect(() => {
+    if (generatedOtp === 'PENDING' || (generatedOtp && showHint)) {
+      const fetchHint = async () => {
+        try {
+          const res = await fetch(`/api/otp-hint?phone=${phone}`);
+          const data = await res.json();
+          if (data.code) setGeneratedOtp(data.code);
+        } catch (e) {
+          console.error("Hint fetch failed");
+        }
+      };
+      const timer = setTimeout(fetchHint, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [phone, generatedOtp, showHint]);
 
   const reset = () => {
     setState('LOGIN');
