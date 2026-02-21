@@ -1,11 +1,64 @@
-<div align="center">
+# UnderSec-Login
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+A modern, minimalist login security simulation lab designed for cybersecurity training and UI/UX exploration.
 
-  <h1>Built with AI Studio</h2>
+## 🚀 Overview
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+**UnderSec-Login** is a high-fidelity "shooting range" (靶场) for simulating mobile OTP (One-Time Password) login flows. It provides a safe environment for students and security enthusiasts to practice identifying login patterns, testing UI vulnerabilities, or simply exploring modern authentication interfaces.
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## ✨ Features
 
-</div>
+- **Modern Minimalist UI**: Crafted with Tailwind CSS and Framer Motion for a premium, responsive experience.
+- **OTP Simulation**: Realistic "Get Code" flow with a 60-second countdown and simulated network latency.
+- **Security Hint System**: A built-in debug tooltip (bottom-right) to reveal the generated OTP for testing purposes.
+- **Multi-language Support**: Seamlessly toggle between English and Chinese.
+- **Success State**: Smooth transitions to a post-login dashboard view.
+- **Cybersecurity Focused**: Designed specifically for educational labs and security demonstrations.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [React 19](https://react.dev/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Language**: TypeScript
+
+## 📦 Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/undersec-login.git
+   cd undersec-login
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## 📖 Usage
+
+1. Enter any 10+ digit phone number.
+2. Click **"Get Code"** (获取验证码).
+3. Look at the **bottom-right corner** of the screen. Click the "Eye" icon to reveal the simulated OTP.
+4. Enter the 4-digit code into the input field.
+5. Click **"Login Now"** (立即登录) to see the success state.
+
+## 📄 License
+
+This project is licensed under the Apache-2.0 License.
+
+---
+Built for **UnderSec Lab** education initiatives.
