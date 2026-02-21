@@ -1,5 +1,5 @@
 {
-  "name": "UnderSec-Login",
+  "name": "UnderSec-PhoneLoginTask",
   "description": "A modern minimalist login shooting range for cybersecurity training, featuring OTP verification simulation.",
   "requestFramePermissions": []
 }
